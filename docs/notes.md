@@ -32,3 +32,8 @@ select * from user where score=100 or (score=90 and sex=male);
 //这就与我们实际想筛选的不一致了，我们实际想筛选男生里面，分数等于100或等于90的学生，可sql语句变成了筛选分数等于100的学生或男生里面分数等于90的学生
 ```
 
+6、in和or语义相同，但推荐优先使用in，除了in语句更加简洁直观，执行效率更快外，in还能包含其他select子句
+
+7、其他DBMS允许not对各种条件取反，而mysql中not只对in，between，exists有效
+
+8、聚合函数里可以配合distinct使用，如avg（distinct score），去重后取平均值
