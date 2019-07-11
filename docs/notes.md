@@ -19,3 +19,16 @@ select distinct name,score from user;
 	select * from user limit 4 offset 5;
 ``` 
 
+4、order by按字段排序，默认升序asc，倒序为desc
+```
+	select score,name from user order by score,name;//可多字段排序，优先按score升序，若score相同，则按照name升序A-Z
+```
+
+5、and和or的使用，最好用括号（）明确条件筛选顺序，而不是依赖于操作符的优先级
+```
+select * from user where score=100 or score=90 and sex=male;
+//此语句若没有用（）明确处理顺序，那么会按照and和or的优先级进行处理，and优先级最高，所以先处理and两侧的。等价于：
+select * from user where score=100 or (score=90 and sex=male);
+//这就与我们实际想筛选的不一致了，我们实际想筛选男生里面，分数等于100或等于90的学生，可sql语句变成了筛选分数等于100的学生或男生里面分数等于90的学生
+```
+
