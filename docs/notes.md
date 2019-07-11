@@ -37,3 +37,38 @@ select * from user where score=100 or (score=90 and sex=male);
 7、其他DBMS允许not对各种条件取反，而mysql中not只对in，between，exists有效
 
 8、聚合函数里可以配合distinct使用，如avg（distinct score），去重后取平均值
+
+9、过滤分组，可以使用where+group by也可以使用group by+having，优先推荐where子句方式，效率高
+```
+select id,name from user where id! = 1 group by id;
+等价于
+select id,name from user group by id having id != 1;
+```
+但是having比where更容易解决复杂问题：
+```
+select id,name,sum(score) from user group by id having sum(score)>100;
+```
+
+10、select 子句书写顺序：
+select 
+from 
+where 
+group by 
+having
+order by
+limit 
+
+11、子查询
+- 子查询的数目虽然没有限制，但实际受性能影响，不能嵌套太多子查询
+- 保证where子句中的列与子查询select中的列相同
+- 子查询一般与in操作符结合使用
+
+12、全文本搜索fulltext，字段类型
+```
+select notes from article where Match(notes) Against('abc');
+文章中查询带abc字符串的文本行，不区分大小写
+
+select notes,Match(notes) Against('abc') as rank from article;
+查询文章每行中带有字符串abc的等级rank，无为0，有如果靠行前值就越大
+```
+
