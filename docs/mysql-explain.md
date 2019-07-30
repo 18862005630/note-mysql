@@ -74,7 +74,7 @@ select name from (select * from users) a where a.age=18;
 partitions代表分区表中的命中情况，非分区表，该项为null
 
 ### 5、type（表示查询方式的好坏）
-连接类型，以下从最佳类型到最差类型排序
+##### 以下从最佳类型到最差类型排序
 5、1：system
 表仅有一行，这是const类型的特例，平时不会出现，可以忽略不计
 
