@@ -1,10 +1,10 @@
 # mysql-explain
 sql命令前面加上explain会输出以下几种属性特征：
 
-###### 1、id
+### 1、id
 sql语句的执行顺序
 
-###### 2、select_type
+### 2、select_type
 sql语句的类型
 
 2、1：simple
@@ -67,10 +67,10 @@ explain select * from users where id in (select id from user where name='ch' uni
 select name from (select * from users) a where a.age=18;
 ```
 
-###### 3、table
+### 3、table
 输出行所用的表
 
-###### 4、type（表示查询方式的好坏）
+### 4、type（表示查询方式的好坏）
 连接类型，以下从最佳类型到最差类型排序
 4、1：system
 表仅有一行，这是const类型的特例，平时不会出现，可以忽略不计
@@ -137,25 +137,25 @@ explain select * from users where email = '1232@qq.com';
 
 4、12：all（全表扫描数据文件）
 
-###### 5、possible_keys
+### 5、possible_keys
 查询中可能使用到的索引
 
-###### 6、key
+### 6、key
 查询中真正使用到的索引(当select_type为index_merge时，这里可能出现两个以上的索引，其他只会出现一个索引)
 
-###### 7、key_len
+### 7、key_len
 MySQL会用到的索引长度，单列索引用到整个索引的长度，index_merge中算出具体用到的索引长度，该字段只会算where条件用用到索引，order by和group by不在统计范围内
 
-###### 8、ref
+### 8、ref
 如果是使用的常数等值查询，这里会显示const，如果是连接查询，被驱动表的执行计划这里会显示驱动表的关联字段，如果是条件使用了表达式或者函数，或者条件列发生了内部隐式转换，这里可能显示为func
 
-###### 9、rows
+### 9、rows
 执行计划中估算的扫描行数，非精确值，值越大越不好
 
-###### 10、filtered
+### 10、filtered
 5.7之后的版本默认就有这个字段，不需要使用explain extended了。这个字段表示存储引擎返回的数据在server层过滤后，剩下多少满足查询的记录数量的比例，注意是百分比，不是具体记录数
 
-###### 11、extra
+### 11、extra
 查询计划器给出的额外信息说明
 若extra中出现using filesort和using temporary就说明语句需要优化了，此两项非常消耗性能
 
