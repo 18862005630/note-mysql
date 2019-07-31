@@ -10,7 +10,7 @@ Explain是模拟mysql优化器执行sql查询语句，分析查询语句或表�
 ### 2、explain作用
 在sql语句前加上explain，可以看出：
 ```
-（1）表的读取顺序id
+（1）表的读取顺序（id）
 （2）数据读取操作的操作类型（select_type）
 （3）哪些索引可以使用（possible_keys）
 （4）哪些索引被实际使用（key）
