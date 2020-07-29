@@ -1,0 +1,10 @@
+#### centos6安装mysql并创建用户授权
+##### 1、安装
+···
+https://www.cnblogs.com/sh635208/p/10018334.html
+···
+
+##### 2、创建用户并授权给数据库
+···
+https://www.cnblogs.com/zhongyehai/p/10695659.html
+···
